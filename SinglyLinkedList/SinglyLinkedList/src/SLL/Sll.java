@@ -81,6 +81,71 @@ public class Sll {
 		}
 	}
 	
+	public int ToGetLengthOfSLL()
+	{
+		ListNode temp = head;
+		int count =0;
+		
+		while(temp != null)
+		{
+			count++;
+			temp = temp.next;
+		}
+		return count;
+	}
+	
+	public ListNode ToFindMidNodeOfSLL()
+	{
+		ListNode slowNode = head;
+		ListNode fastNode = head;
+		
+		if(head == null)
+		{
+			return head;
+		}
+		else
+		{
+			while(fastNode != null && fastNode.next != null)
+			{
+				slowNode = slowNode.next;
+				fastNode = fastNode.next.next;
+			}
+			return slowNode;
+		}
+	}
+	
+	public ListNode ToFindNthNodeFromTheLastNode(int n)
+	{
+		ListNode refNode = head;
+		ListNode currentNode = head;
+		int count = 0;
+		
+		if(head == null)
+		{
+			return head;
+		}
+		if(n<=0)
+		{
+			throw new IllegalArgumentException("Invalid Value "+ n);	
+		}
+		
+			while(count < n)
+			{
+				if(refNode == null)
+				{
+					throw new IllegalArgumentException(n + "is greater than number of nodes in SLL");	
+				}
+					refNode = refNode.next;
+					count++;
+			}
+			while(refNode != null)
+			{
+				refNode = refNode.next;
+				currentNode = currentNode.next;
+			}
+			return currentNode;
+	}
+	
 	public  void displaySll()
 	{
 		ListNode temp = head;
@@ -102,6 +167,8 @@ public class Sll {
 		s.AddNodeAtFirst(20);
 		s.AddNodeAtFirst(30);
 		s.AddNodeAtEnd(40);
+		s.AddNodeAtEnd(50);
+
 		
 		System.out.println("\n Linked List :");
 		s.displaySll();
@@ -112,6 +179,13 @@ public class Sll {
 
 		System.out.println("\n\n Reversed Linked List using reccursion :");		
 		s.ToPrintSllInReverseUsingReccursion(head);
+		
+		System.out.println("\n\nLength of SLL :" + s.ToGetLengthOfSLL());
+		
+		System.out.println("\n\nMiddle node is :"+ s.ToFindMidNodeOfSLL().data);
+		
+		ListNode nthTermFromLast = s.ToFindNthNodeFromTheLastNode(2);
+		System.out.println("\n\n 2nd term from last node is :"+ nthTermFromLast.data);
 
 	}
 
