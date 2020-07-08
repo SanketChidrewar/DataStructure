@@ -1,5 +1,6 @@
 package SLL;
 
+
 public class Sll {
 
 	private static ListNode head;
@@ -24,7 +25,7 @@ public class Sll {
 		}
 		else
 		{
-			ListNode newNode = new Sll.ListNode(data);
+			ListNode newNode = new ListNode(data);
 			newNode.next = head;
 			head = newNode;
 		}
@@ -146,6 +147,78 @@ public class Sll {
 			return currentNode;
 	}
 	
+	public void ToInsertNodeInSortedSLL(int data)
+	{
+		ListNode newNode = new ListNode(data);
+		ListNode current = head;
+		ListNode temp = null;
+
+		
+		while(current != null && current.data < data)
+		{
+			temp = current;
+			current = current.next;
+		}
+		
+		newNode.next = current;
+		temp.next = newNode;
+	}
+	
+	public void DeleteNodeByTakingKeyValue(int key)
+	{
+		ListNode current = head;
+		ListNode temp = null;
+		
+		while(current != null && current.data != key)
+		{
+			temp = current;
+			current = current.next;
+		}
+		
+		if(current == null)
+		{
+			return;
+		}
+		temp.next = current.next;
+	}
+	
+	public void createSLLHavingLoop()
+	{
+		ListNode first = new ListNode(1);
+		ListNode second = new ListNode(2);
+		ListNode third = new ListNode(3);
+		ListNode fourth = new ListNode(4);
+		ListNode fifth = new ListNode(5);
+		ListNode sixth = new ListNode(6);
+		
+		head = first;
+		first.next = second;
+		second.next = third;
+		third.next = fourth;
+		fourth.next = fifth;
+		fifth.next = sixth;
+		sixth.next = third;
+
+	}
+	
+	public boolean detectLoopInSLL()
+	{
+		ListNode slowptr = head;
+		ListNode fastptr = head;
+		
+		while(fastptr != null && fastptr.next != null)
+		{
+			fastptr = fastptr.next.next;
+			slowptr = slowptr.next;
+			
+			if(fastptr == slowptr)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public  void displaySll()
 	{
 		ListNode temp = head;
@@ -163,9 +236,9 @@ public class Sll {
 		
 		//System.out.println("hello");
 		Sll s = new Sll();
-		s.AddNodeAtFirst(10);
-		s.AddNodeAtFirst(20);
-		s.AddNodeAtFirst(30);
+		s.AddNodeAtEnd(10);
+		s.AddNodeAtEnd(20);
+		s.AddNodeAtEnd(30);
 		s.AddNodeAtEnd(40);
 		s.AddNodeAtEnd(50);
 
@@ -173,11 +246,11 @@ public class Sll {
 		System.out.println("\n Linked List :");
 		s.displaySll();
 		
-		head = s.ReverseSll();
-		System.out.println("\n\n Reversed Linked List :");
-		s.displaySll();
+//		head = s.ReverseSll();
+//		System.out.println("\n\n Reversed Linked List :");
+//		s.displaySll();
 
-		System.out.println("\n\n Reversed Linked List using reccursion :");		
+		System.out.println("\n\nPrint Reverse Linked List using reccursion without reversing actual SLL :");		
 		s.ToPrintSllInReverseUsingReccursion(head);
 		
 		System.out.println("\n\nLength of SLL :" + s.ToGetLengthOfSLL());
@@ -186,7 +259,28 @@ public class Sll {
 		
 		ListNode nthTermFromLast = s.ToFindNthNodeFromTheLastNode(2);
 		System.out.println("\n\n 2nd term from last node is :"+ nthTermFromLast.data);
+		
+		System.out.println("\n\n SLL AFTER ADDING 25 in sorted list ");
+		s.ToInsertNodeInSortedSLL(25);
+		s.displaySll();
+		
+		System.out.println("\n\n SLL AFTER Deleting node having 25 as a data in it ");
+		s.DeleteNodeByTakingKeyValue(25);
+		s.displaySll();
 
+		//CODE To Detect a loop in SLL
+		s.createSLLHavingLoop(); // creating SLL having loop in it
+		boolean b = s.detectLoopInSLL();
+		if(b == true)
+		{
+			System.out.println("\n\nTHE SLL CONTAINS LOOP IN IT ");
+		}
+		else
+		{
+			System.out.println("\n\nTHE SLL does not CONTAINS LOOP IN IT ");
+
+		}
+		
 	}
 
 }
