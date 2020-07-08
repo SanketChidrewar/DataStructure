@@ -30,33 +30,12 @@ public class Sll {
 		}
 	}
 	
-	public void AddNodeAtEnd(int data)
-	{
-		ListNode temp = head;
-		if(temp == null)
-		{
-			head = new Sll.ListNode(data);
-		}
-		else
-		{
-			ListNode newNode = new Sll.ListNode(data);
-			while(temp.next != null)
-			{
-				temp =temp.next;
-			}
-			
-			temp.next = newNode;
-		}
-	}
-	
 	public  void displaySll()
 	{
-		ListNode temp = head;
-
-		while(temp!=null)
+		while(head!=null)
 		{
-			System.out.print(temp.data +"-->");
-			temp = temp.next;
+			System.out.print(head.data +"-->");
+			head = head.next;
 		}
 	}
 	
@@ -69,7 +48,6 @@ public class Sll {
 		s.AddNodeAtFirst(10);
 		s.AddNodeAtFirst(20);
 		s.AddNodeAtFirst(30);
-		s.AddNodeAtEnd(40);
 		
 		s.displaySll();
 		

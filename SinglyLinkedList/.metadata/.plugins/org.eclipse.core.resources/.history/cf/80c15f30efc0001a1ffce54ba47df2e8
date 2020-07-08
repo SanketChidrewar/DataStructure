@@ -69,7 +69,6 @@ public class Sll {
 		s.AddNodeAtFirst(10);
 		s.AddNodeAtFirst(20);
 		s.AddNodeAtFirst(30);
-		s.AddNodeAtEnd(40);
 		
 		s.displaySll();
 		
