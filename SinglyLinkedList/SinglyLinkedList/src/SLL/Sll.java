@@ -2,7 +2,7 @@ package SLL;
 
 public class Sll {
 
-	private ListNode head;
+	private static ListNode head;
 	
 	private static class ListNode {
 		
@@ -49,6 +49,38 @@ public class Sll {
 		}
 	}
 	
+	public ListNode ReverseSll()
+	{
+		ListNode current = head;
+		ListNode previous = null;
+		ListNode next = null;
+		
+		if(current == null)
+		{
+			return null;
+		}
+		else
+		{
+			while(current != null)
+			{
+			next = current.next;
+			current.next = previous;
+			previous = current;
+			current = next;
+			}
+		}
+		return previous;
+	}
+	
+	public void ToPrintSllInReverseUsingReccursion(ListNode temp)
+	{
+		if(temp != null)
+		{
+			ToPrintSllInReverseUsingReccursion(temp.next);
+			System.out.print(temp.data + "-->");
+		}
+	}
+	
 	public  void displaySll()
 	{
 		ListNode temp = head;
@@ -71,8 +103,15 @@ public class Sll {
 		s.AddNodeAtFirst(30);
 		s.AddNodeAtEnd(40);
 		
+		System.out.println("\n Linked List :");
 		s.displaySll();
 		
+		head = s.ReverseSll();
+		System.out.println("\n\n Reversed Linked List :");
+		s.displaySll();
+
+		System.out.println("\n\n Reversed Linked List using reccursion :");		
+		s.ToPrintSllInReverseUsingReccursion(head);
 
 	}
 
