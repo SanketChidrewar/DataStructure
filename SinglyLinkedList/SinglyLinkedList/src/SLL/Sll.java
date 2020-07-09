@@ -279,8 +279,6 @@ public class Sll {
 		{
 			System.out.println("\n\nTHE SLL does not CONTAINS LOOP IN IT ");
 
-		}
-		
+		}	
 	}
-
 }
