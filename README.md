@@ -3,8 +3,8 @@
 ## Using JAVA 
 
 # Signly Linked List
-1 - How TO create Singly Linked list and some operations on it.
-2 - Function to find length of SLL
+1 - How TO create Singly Linked list and some operations on it. <br />
+  i> Function to find length of SLL <br />
   ii> Display All SLL elements
   iii> Enter new Node at Beginning
   iV> Enter new Node at end
